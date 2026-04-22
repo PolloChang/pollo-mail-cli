@@ -24,4 +24,4 @@ allowed-tools: ["file_reader", "file_writer"]
 
 ## 結束條件
 
-成功在檔案系統中建立並儲存對應的 `.md` 檔案，並向使用者報告「文件已準備完畢，可交由 Developer Agent 開發」。
+成功在檔案系統中建立並儲存對應的 `.md` 檔案，並向使用者報告。當使用者回覆「確認無誤」或「可以進入下一步」時，可交由 Developer Agent 開發。
