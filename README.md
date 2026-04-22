@@ -13,7 +13,7 @@
 ## 目錄結構
 
 - `.antigravity/rules/`: 包含 Google Antigravity 專用的工作區規則 (Workspace Rules)，用於規範 Agent 的程式碼生成與內部思考邏輯。
-- `docs/` 或 `skills/`: 存放具體的 AI Skill 定義檔與 Artifacts 參考。
+- `docs/` 或 `.skills/`: 存放具體的 AI Skill 定義檔與 Artifacts 參考。
 - `ANTIGRAVITY.md`: 專門針對 Antigravity Agent 的角色設定與系統級指令。
 - `EXAMPLES.md`: 核心技術棧的標準程式碼範例，供 Agent 在建立 Implementation Plan 時參考。
 
@@ -27,9 +27,6 @@
 
 ```bash
 java-ai-skills-manager/
-├── .antigravity/
-│   └── rules/
-│       └── java-master-rules.md  (定義 Agent 必須遵守的 Workspace Rules)
 ├── docs/                         (或 skills/ 存放其他技能說明)
 ├── src/                          (您的 Java 原始碼存放區)
 ├── ANTIGRAVITY.md                (Agent 系統提示詞與角色設定)
@@ -37,5 +34,8 @@ java-ai-skills-manager/
 ├── README.md                     (專案首頁，包含如何設定的說明)
 └── build.gradle                  (建置檔)
 
-這樣一來，基礎的文件架構就非常完整了！Google Antigravity 的 Agent 在進入這個專案時，就能立刻掌握這是一個以 Java 21 + Spring Boot 為核心，且具備嚴格開發標準的高品質專案。
 ```
+
+## Referance
+
+* [Spring AI Agentic Patterns (Part 1): Agent Skills - Modular, Reusable Capabilities](https://spring.io/blog/2026/01/13/spring-ai-generic-agent-skills)
