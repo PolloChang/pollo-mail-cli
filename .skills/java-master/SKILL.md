@@ -1,6 +1,6 @@
 ---
 name: "java-master"
-description: "將 PRD 與 ADR 轉化為實際的 Java 21 / Spring Boot 程式碼，並管理 PLAN.md。"
+description: "將 PRD 與 ADR 轉化為實際的 Java 21 / Spring Boot 程式碼，並管理 docs/PLAN.md。"
 allowed-tools: ["file_reader", "file_writer", "terminal_executor"]
 ---
 
@@ -24,4 +24,4 @@ allowed-tools: ["file_reader", "file_writer", "terminal_executor"]
 
 ## 結束條件
 
-`PLAN.md` 中的開發任務全數打勾，並通知使用者準備進行單元測試。
+系統通過整合測試，PRD `docs/PLAN.md` 驗收標準全數打勾，並向使用者報告。當使用者回覆「確認無誤」或「可以進入下一步」時，可執行單元測試。

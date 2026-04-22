@@ -12,7 +12,7 @@ allowed-tools: ["file_reader", "file_writer", "terminal_executor"]
 
 ## 執行流程
 
-1. **狀態讀取** ：閱讀 `PLAN.md` 了解剛剛完成了哪些類別 (Classes)。
+1. **狀態讀取** ：閱讀 `docs/PLAN.md` 了解剛剛完成了哪些類別 (Classes)。
 2. **撰寫測試** ：
 	- 使用 **JUnit 5** 與 **Mockito** 。
 		- 測試檔案必須放在 `src/test/java/` 對應的套件下。
@@ -20,7 +20,7 @@ allowed-tools: ["file_reader", "file_writer", "terminal_executor"]
 		- 針對 Domain/Records：測試核心邏輯或資料驗證。
 		- 命名規範：測試方法需具備描述性（例如 `shouldReturnTaskResponseWhenTaskExists()` ）。
 3. **更新狀態** ：
-	- 在 `PLAN.md` 中新增「單元測試」區塊，並將完成的測試項目打勾 `[x]` 。
+	- 在 `docs/PLAN.md` 中新增「單元測試」區塊，並將完成的測試項目打勾 `[x]` 。
 
 ## 限制
 
