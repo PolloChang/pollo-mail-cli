@@ -34,3 +34,5 @@ Thumbs.db
 *.zip
 *.tar.gz
 *.rar
+
+.antigravity.yaml
