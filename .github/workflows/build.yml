@@ -1,5 +1,8 @@
 name: Java CI with Gradle & GraalVM
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     branches: [ "main" ]
@@ -14,7 +17,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Set up GraalVM JDK 21
-      uses: graalvm/setup-graalvm@v1
+      uses: graalvm/setup-graalvm@v2
       with:
         java-version: '21'
         distribution: 'graalvm'
