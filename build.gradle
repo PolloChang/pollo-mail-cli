@@ -2,14 +2,16 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.4.0'
     id 'io.spring.dependency-management' version '1.1.6'
+    id 'org.graalvm.buildtools.native' version '0.10.3'
 }
 
-group = 'com.master.ai'
+group = 'com.pollo.mail'
 version = '1.0.0-SNAPSHOT'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 configurations {
@@ -23,28 +25,48 @@ repositories {
 }
 
 dependencies {
-    // Spring Boot Core & JPA
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // Spring Boot Core
+    implementation 'org.springframework.boot:spring-boot-starter'
     
     // Picocli integration
     implementation 'info.picocli:picocli-spring-boot-starter:4.7.6'
+    annotationProcessor 'info.picocli:picocli-codegen:4.7.6'
     
-    // PostgreSQL 17 Driver
-    runtimeOnly 'org.postgresql:postgresql'
+    // Jakarta Mail / Angus Mail
+    implementation 'org.eclipse.angus:angus-mail:2.0.3'
     
-    // Lombok (Optional but recommended for boilerplate)
+    // Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    // Configuration Properties Processor
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
     // Testing
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs << "-parameters" // 保留參數名稱供 Reflection 使用 (對 Spring 有利)
-    // 如果需要啟用 Java 預覽特性，可加入: options.compilerArgs << "--enable-preview"
+    options.compilerArgs << "-parameters"
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.named('bootRun') {
+    standardInput = System.in
+}
+
+graalvmNative {
+    binaries {
+        main {
+            buildArgs.add('--enable-https')
+            buildArgs.add('--enable-url-protocols=https,http')
+            // Fallback: If not all classes are reachable, build will fail instead of creating an invalid image
+            buildArgs.add('--no-fallback')
+            // Option: Uncomment below to reduce memory usage during compilation
+            // buildArgs.add('-J-Xmx4g')
+        }
+    }
 }
