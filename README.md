@@ -1,41 +1,31 @@
-# Java Master AI Skill for Google Antigravity
+# Pollo-Mail CLI 🐔✉️
 
-這是一個專為現代化 Java 開發設計的 AI Skill 集合，特別針對 **Google Antigravity** 這套「代理人優先 (Agent-first)」的 IDE 進行了最佳化。本專案定義了 Antigravity Agent 在規劃、編寫與驗證 Java 應用程式時應遵循的系統架構與最佳實踐。
+**Pollo-Mail CLI** 是一個專為終端機重度使用者與筆記愛好者打造的跨平台電子郵件工具。
 
-## 技術選型
+## 🎯 解決什麼問題 (The "Why")
 
-- **語言**: Java 21
-- **核心框架**: Spring Boot 3.4+ (對標現代化與未來的 Spring Boot 4 生態)
-- **資料庫**: PostgreSQL 17 (搭配 Spring Data JPA)
-- **命令列框架**: `picocli-spring-boot-starter`
-- **建置工具**: Gradle
+在終端機環境中，傳統的 CLI 電子郵件工具往往面臨以下痛點：
+1. **安全性堪憂**：大多需要將 SMTP/IMAP 密碼明文寫死在腳本或環境變數中。
+2. **與現代筆記軟體脫節**：收下來的信件難以直接匯入 Obsidian、Logseq 等使用 Markdown 的知識庫軟體中。
+3. **啟動緩慢**：如果使用 Java 開發，冷啟動 (Cold Start) 動輒 1~2 秒，對於一個需要隨敲即用的命令列工具來說體驗極差。
 
-## 目錄結構
+**Pollo-Mail CLI 完美解決了上述問題：**
 
-- `.antigravity/rules/`: 包含 Google Antigravity 專用的工作區規則 (Workspace Rules)，用於規範 Agent 的程式碼生成與內部思考邏輯。
-- `docs/` 或 `.skills/`: 存放具體的 AI Skill 定義檔與 Artifacts 參考。
-- `ANTIGRAVITY.md`: 專門針對 Antigravity Agent 的角色設定與系統級指令。
-- `EXAMPLES.md`: 核心技術棧的標準程式碼範例，供 Agent 在建立 Implementation Plan 時參考。
+*   **🔒 硬體級別的安全防護**：我們不儲存明文密碼。工具會自動擷取您電腦的 MAC Address 與作業系統名稱作為獨一無二的 Salt，並採用 AES-256 對您的信箱設定檔進行本地加密。設定檔一旦離開您的電腦，就形同廢紙。
+*   **📝 為 PKM (個人知識管理) 而生**：內建強大的信件解析器，能自動將繁雜的 HTML 郵件轉化為乾淨的 Markdown 格式，並在檔頭附上 `YAML Frontmatter` (包含日期、寄件人、主旨等 Metadata)。附件也會被整齊地下載封裝，無縫對接您的第二大腦。
+*   **⚡ 顛覆認知的極致速度**：藉由 GraalVM Native Image 的 AOT 靜態編譯技術，我們將龐大的 Java 與 Spring Boot 框架壓縮成單一且無需 JRE 的二進位執行檔。啟動速度來到驚人的 **~22 毫秒**，給您純 C/Rust 語言等級的極速體驗。
 
-## 如何使用
+如果您希望在終端機內優雅、安全且極速地收發郵件，同時將重要的郵件內容無縫轉化為個人知識庫的一部分，Pollo-Mail CLI 就是為您量身打造的完美解決方案。
 
-1. 將此結構複製到您的專案根目錄。
-2. 使用 **Google Antigravity** 開啟此專案作為工作區 (Workspace)。
-3. 在 Antigravity 右下角的「Settings (設定)」中，將 `.antigravity/rules/` 內的規則匯入或設定為 **Workspace Rules** (工作區規則)，確保 Agent 能嚴格遵守 Java 21 與 Spring Boot 的規範。
-4. 透過 Antigravity 的 **Agent Manager** 建立新的 Agent 並下達開發指令，Agent 將會自動參考 `EXAMPLES.md` 產生結構化的 Task Lists 與實作計畫。
+---
 
+## 📂 文件導覽
 
-```bash
-java-ai-skills-manager/
-├── docs/                         (或 skills/ 存放其他技能說明)
-├── src/                          (您的 Java 原始碼存放區)
-├── ANTIGRAVITY.md                (Agent 系統提示詞與角色設定)
-├── EXAMPLES.md                   (標準寫法範例)
-├── README.md                     (專案首頁，包含如何設定的說明)
-└── build.gradle                  (建置檔)
+關於如何安裝、使用或是參與開發，請參考以下文件：
 
-```
+*   🚀 **[如何使用 (SETUP.md)](docs/SETUP.md)**：包含安裝說明、帳號配置 (`setup`)、發送 (`send`) 與接收 (`fetch`) 郵件的完整指令教學。
+*   🛠️ **[如何開發 (DEVELOP.md)](docs/DEVELOP.md)**：包含本專案的系統架構、GraalVM Native Image 編譯指南與 Gradle 環境設定。
+*   📝 **[架構決策 (ADR)](docs/adr/)**：記錄了開發過程中的重大架構決策與選型考量。
 
-## Referance
-
-* [Spring AI Agentic Patterns (Part 1): Agent Skills - Modular, Reusable Capabilities](https://spring.io/blog/2026/01/13/spring-ai-generic-agent-skills)
+---
+*Built with ❤️ utilizing GraalVM & Spring Boot 3*
